@@ -1,5 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import { signIn } from "@/auth";
+//import { signIn } from "next-auth/react";
 
 export default function Home() {
   return (
@@ -9,6 +11,14 @@ export default function Home() {
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.tsx</code>
         </p>
+        <form
+          action={async () => {
+            "use server";
+            await signIn();
+          }}
+        >
+          <button type="submit">Sign in</button>
+        </form>
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
