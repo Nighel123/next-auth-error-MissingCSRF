@@ -1,0 +1,29 @@
+under
+
+http://localhost:3000/api/auth/providers
+
+you find
+
+{
+  "google": {
+    "id": "google",
+    "name": "Google",
+    "type": "oidc",
+    "signinUrl": "http://localhost:3000/api/auth/signin/google",
+    "callbackUrl": "http://localhost:3000/api/auth/callback/google"
+  },
+  "apple": {
+    "id": "apple",
+    "name": "Apple",
+    "type": "oidc",
+    "signinUrl": "http://localhost:3000/api/auth/signin/apple",
+    "callbackUrl": "http://localhost:3000/api/auth/callback/apple"
+  },
+  "credentials": {
+    "id": "credentials",
+    "name": "Credentials",
+    "type": "credentials",
+    "signinUrl": "http://localhost:3000/api/auth/signin/credentials",
+    "callbackUrl": "http://localhost:3000/api/auth/callback/credentials"
+  }
+}

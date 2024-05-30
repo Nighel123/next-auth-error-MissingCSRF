@@ -1,12 +1,17 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { signIn } from "@/auth";
+import { auth, signIn, signOut } from "@/auth";
+import { SignInButton } from "./signInButton";
 //import { signIn } from "next-auth/react";
 
-export default function Home() {
+export default async function Home() {
+  const session = await auth();
   return (
     <main className={styles.main}>
       <div className={styles.description}>
+        {session?.user
+          ? JSON.stringify(session.user, null, 2)
+          : "You are not logged in."}
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>app/page.tsx</code>
@@ -19,6 +24,15 @@ export default function Home() {
         >
           <button type="submit">Sign in</button>
         </form>
+        <form
+          action={async () => {
+            "use server";
+            await signOut();
+          }}
+        >
+          <button type="submit">Sign Out</button>
+        </form>
+        <SignInButton />
         <div>
           <a
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
